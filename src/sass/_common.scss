@@ -1,1 +1,90 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+li {
+  list-style-type: none;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px; /* Розмір шрифту (за бажанням) */
+  font-weight: bold;
+  color: #333; /* Колір тексту (за бажанням) */
+  margin-bottom: 20px; /* Відступ віднизу (за бажанням) */
+}
+
+/* Стилі для слайдера */
+.glide {
+  width: 80%; /* Ширина слайдера */
+  margin: 0 auto; /* Центрування слайдера */
+}
+
+.glide__track {
+  //   display: flex;
+  width: auto;
+}
+
+.glide__slides {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.glide__slide {
+  margin-right: 15px; /* Відступ між слайдами */
+}
+
+/* Стилі для посилань у слайдів */
+.video-popup {
+  display: block;
+  text-decoration: none;
+  position: relative;
+}
+
+.video-popup img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px; /* Закруглення куточків */
+  transition: transform 0.3s ease-in-out;
+}
+
+.video-popup:hover img {
+  transform: scale(1.1); /* Збільшення при наведенні */
+}
+
+/* Стилі для пагінації у попапі */
+.slb-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.slb-nav a {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #333; /* Колір точок */
+  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slb-nav a.active {
+  background-color: #fff; /* Колір активної точки */
+}
+
+/* Додаткові стилі для попапу, якщо необхідно */
+.slbContent {
+  max-width: 800px; /* Максимальна ширина контенту в попапі */
+  padding: 20px;
+}
+
+.slbCaption {
+  color: #333; /* Колір підпису в попапі */
+  font-size: 16px;
+}
+
+.slbCounter {
+  color: #555; /* Колір лічильника в попапі */
+  font-size: 14px;
+}
