@@ -1,44 +1,43 @@
 import Glide from '@glidejs/glide';
 import SimpleLightbox from 'simplelightbox';
 
-document.addEventListener('DOMContentLoaded', function () {
-  const clientToken = '5566eb86a7a59ccf4afb33564a1d3e57';
-  // const clientSecret = "YOUR_CLIENT_SECRET";
+const clientToken = '5566eb86a7a59ccf4afb33564a1d3e57';
+// const clientSecret = "YOUR_CLIENT_SECRET";
 
-  const videoIds = [
-    '824804225',
-    '824804225',
-    '824804225',
-    '824804225',
-    '824804225',
-    '824804225',
-    '824804225',
-    '824804225',
-  ];
+const videoIds = [
+  '824804225',
+  '824804225',
+  '824804225',
+  '824804225',
+  '824804225',
+  '824804225',
+  '824804225',
+  '824804225',
+];
 
-  function getVimeoData(videoId) {
-    return new Promise((resolve, reject) => {
-      fetch(`https://api.vimeo.com/videos/${videoId}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${clientToken}`,
-        },
-      })
-        .then(response => response.json())
-        .then(data => resolve(data))
-        .catch(error => reject(error));
-    });
-  }
+function getVimeoData(videoId) {
+  return new Promise((resolve, reject) => {
+    fetch(`https://api.vimeo.com/videos/${videoId}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${clientToken}`,
+      },
+    })
+      .then(response => response.json())
+      .then(data => resolve(data))
+      .catch(error => reject(error));
+  });
+}
 
-  const sliderContainer = document.querySelector('.glide__slides');
+const sliderContainer = document.querySelector('.glide__slides');
 
-  // Function to create Vimeo video slides
-  async function createVideoSlides() {
-    for (const videoId of videoIds) {
-      const videoData = await getVimeoData(videoId);
-      const videoThumbnailUrl = videoData.pictures.sizes[2].link;
-      const videoEmbedUrl = `https://player.vimeo.com/video/${videoId}`;
-      const slide = `
+// Function to create Vimeo video slides
+async function createVideoSlides() {
+  for (const videoId of videoIds) {
+    const videoData = await getVimeoData(videoId);
+    const videoThumbnailUrl = videoData.pictures.sizes[2].link;
+    const videoEmbedUrl = `https://player.vimeo.com/video/${videoId}`;
+    const slide = `
         <li class="glide__slide">
           <a href="${videoEmbedUrl}" class="video-popup" data-vimeo-id="${videoId}">
             <img src="${videoThumbnailUrl}" alt="Video thumbnail">
@@ -46,11 +45,12 @@ document.addEventListener('DOMContentLoaded', function () {
         </li>
       `;
 
-      sliderContainer.insertAdjacentHTML('beforeend', slide);
-    }
+    sliderContainer.insertAdjacentHTML('beforeend', slide);
   }
-  createVideoSlides();
+}
+createVideoSlides();
 
+document.addEventListener('DOMContentLoaded', function () {
   // Чекаєм рендер сторінки, потім виконуєм:
   new Glide('.glide', {
     type: 'slider',
